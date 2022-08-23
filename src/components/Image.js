@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Image({ image }) {
   return (
-    <Link to={`/details/${image.id}`}>
+    <Link to={`/tactacam-technical/details/${image.id}`}>
       <img className="styled-image" src={image.urls.small} />
     </Link>
   );

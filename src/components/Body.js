@@ -28,8 +28,7 @@ const Body = ({
       hasMore={true}
       scrollThreshold="500px"
       className="inf-scroll"
-      endMessage={<div>end</div>}
-      loader={loader}
+      //   loader={loader}
     >
       <>
         <Filters

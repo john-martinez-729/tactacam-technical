@@ -32,10 +32,16 @@ function App() {
     fetchImages();
   }, [page]);
 
+  useEffect(() => {
+    setImages([]);
+    setPage(1);
+    fetchImages(true);
+  }, [colorFilter, orientationFilter]);
+
   const fetchImages = async (firstFetch) => {
     setLoading(true);
     const apiUrl = "https://api.unsplash.com";
-    const accessKey = "LOus6Q9yJaMbNPTYsfa_CcyWMRedlvYK-6q-2i6tEFI";
+    const accessKey = "chfzaVGm8SRRfTzoe9KgrVNwxZ6CiLdm2s0QaALK-Ts";
     let url = `${apiUrl}/search/photos?client_id=${accessKey}&query=fishing&page=${page}`;
     if (colorFilter) url += `&color=${colorFilter}`;
     if (orientationFilter) url += `&orientation=${orientationFilter}`;
@@ -67,13 +73,18 @@ function App() {
     );
   };
 
+  let homeRoutePath = "/";
+  if (window.location.href.includes("tactacam-technical")) {
+    homeRoutePath = "/tactacam-technical";
+  }
+
   return (
     <BrowserRouter>
       <Topbar />
       <div className="main">
         <Routes>
           <Route
-            path="/"
+            path="/tactacam-technical"
             element={
               <Body
                 images={images}
@@ -86,12 +97,29 @@ function App() {
               />
             }
           />
-          <Route path="/details" element={<Details images={images} />}>
+          <Route
+            path="/tactacam-technical/details"
+            element={<Details images={images} />}
+          >
             <Route
               path=":imageId"
               element={<SelectedImage images={images} />}
             />
           </Route>
+          {/* <Route
+            path="/*"
+            element={
+              <Body
+                images={images}
+                hitNextPage={hitNextPage}
+                loading={loading}
+                colorFilter={colorFilter}
+                setColorFilter={setColorFilter}
+                orientationFilter={orientationFilter}
+                setOrientationFilter={setOrientationFilter}
+              />
+            }
+          /> */}
         </Routes>
       </div>
     </BrowserRouter>

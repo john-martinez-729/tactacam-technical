@@ -83,7 +83,9 @@ figcaption {
   width: 2rem;
   height: 2rem;
 }
-
+.infinite-scroll-component {
+  min-height: 70rem;
+}
 .lds-hourglass:after {
   content: " ";
   display: block;
