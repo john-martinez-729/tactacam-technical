@@ -5,13 +5,14 @@ import React from "react";
 function Details({ images }) {
   return (
     <div className="details-container">
-      <Link to="/" style={{ textDecoration: "none" }}>
-        <div style={{ marginBottom: "1rem" }}>
+      <div style={{ marginBottom: "1rem" }}>
+        <Link to="/" style={{ textDecoration: "none" }}>
           <Button variant="outline-success" size="sm">
             Go back
           </Button>
-        </div>
-      </Link>
+        </Link>
+      </div>
+
       <div>
         <SelectedImage images={images} />
       </div>
