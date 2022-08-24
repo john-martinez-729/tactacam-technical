@@ -32,11 +32,17 @@ body {
   height: 100%;
   object-fit: cover;
   transition: all 0.2s ease-in-out;
-  max-width: 276px;
+  /* max-width: 276px; */
 }
 
 .styled-image:hover {
   transform: scale(1.02);
+}
+
+@media only screen and (min-width: 769px) {
+  .styled-image {
+    /* max-width: 276px; */
+  }
 }
 
 .selected-image {
