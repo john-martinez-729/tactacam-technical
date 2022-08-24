@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Details, SelectedImage, Body } from "./components";
-import { Navbar, Container, Button, Dropdown } from "react-bootstrap";
+import { Navbar, Container } from "react-bootstrap";
 
 import logo from "./logo.png";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -31,6 +31,8 @@ function App() {
   useEffect(() => {
     if (page == 1) {
       fetchImages(true);
+    } else if (page == 0) {
+      setPage(1);
     } else {
       fetchImages();
     }
@@ -38,7 +40,7 @@ function App() {
 
   useEffect(() => {
     setImages([]);
-    setPage(1);
+    setPage(0);
   }, [colorFilter, orientationFilter]);
 
   const fetchImages = async (firstFetch) => {
@@ -48,9 +50,9 @@ function App() {
     let url = `${apiUrl}/search/photos?client_id=${accessKey}&query=fishing&page=${page}`;
     if (colorFilter) url += `&color=${colorFilter}`;
     if (orientationFilter) url += `&orientation=${orientationFilter}`;
-    console.log(url);
     const response = await fetch(url);
     const data = await response.json();
+
     if (data.total > 0) {
       setImages([...images, ...data.results]);
       if (firstFetch && windowDimensions.height > 900) {
@@ -102,20 +104,6 @@ function App() {
               element={<SelectedImage images={images} />}
             />
           </Route>
-          {/* <Route
-            path="/*"
-            element={
-              <Body
-                images={images}
-                hitNextPage={hitNextPage}
-                loading={loading}
-                colorFilter={colorFilter}
-                setColorFilter={setColorFilter}
-                orientationFilter={orientationFilter}
-                setOrientationFilter={setOrientationFilter}
-              />
-            }
-          /> */}
         </Routes>
       </div>
     </BrowserRouter>
