@@ -29,13 +29,16 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetchImages();
+    if (page == 1) {
+      fetchImages(true);
+    } else {
+      fetchImages();
+    }
   }, [page]);
 
   useEffect(() => {
     setImages([]);
     setPage(1);
-    fetchImages(true);
   }, [colorFilter, orientationFilter]);
 
   const fetchImages = async (firstFetch) => {
@@ -45,6 +48,7 @@ function App() {
     let url = `${apiUrl}/search/photos?client_id=${accessKey}&query=fishing&page=${page}`;
     if (colorFilter) url += `&color=${colorFilter}`;
     if (orientationFilter) url += `&orientation=${orientationFilter}`;
+    console.log(url);
     const response = await fetch(url);
     const data = await response.json();
     if (data.total > 0) {
@@ -73,18 +77,13 @@ function App() {
     );
   };
 
-  let homeRoutePath = "/";
-  if (window.location.href.includes("tactacam-technical")) {
-    homeRoutePath = "/tactacam-technical";
-  }
-
   return (
     <BrowserRouter>
       <Topbar />
       <div className="main">
         <Routes>
           <Route
-            path="/tactacam-technical"
+            path="/"
             element={
               <Body
                 images={images}
@@ -97,10 +96,7 @@ function App() {
               />
             }
           />
-          <Route
-            path="/tactacam-technical/details"
-            element={<Details images={images} />}
-          >
+          <Route path="/details" element={<Details images={images} />}>
             <Route
               path=":imageId"
               element={<SelectedImage images={images} />}

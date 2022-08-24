@@ -5,7 +5,7 @@ import React from "react";
 function Details({ images }) {
   return (
     <div className="details-container">
-      <Link to="/tactacam-technical" style={{ textDecoration: "none" }}>
+      <Link to="/" style={{ textDecoration: "none" }}>
         <div style={{ marginBottom: "1rem" }}>
           <Button variant="outline-success" size="sm">
             Go back
