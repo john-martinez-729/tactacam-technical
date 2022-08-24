@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/tactacam-technical/static/css/main.ebfe9c6d.css",
-    "main.js": "/tactacam-technical/static/js/main.1233027a.js",
+    "main.js": "/tactacam-technical/static/js/main.8a1694d0.js",
     "static/js/787.7abfde32.chunk.js": "/tactacam-technical/static/js/787.7abfde32.chunk.js",
     "index.html": "/tactacam-technical/index.html",
     "main.ebfe9c6d.css.map": "/tactacam-technical/static/css/main.ebfe9c6d.css.map",
-    "main.1233027a.js.map": "/tactacam-technical/static/js/main.1233027a.js.map",
+    "main.8a1694d0.js.map": "/tactacam-technical/static/js/main.8a1694d0.js.map",
     "787.7abfde32.chunk.js.map": "/tactacam-technical/static/js/787.7abfde32.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ebfe9c6d.css",
-    "static/js/main.1233027a.js"
+    "static/js/main.8a1694d0.js"
   ]
 }
